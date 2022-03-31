@@ -219,58 +219,11 @@
             clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
           }}
     </style>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 
 <body>
     <div class=" bg-red-50 h-screen">
-        <nav class="border-b  fixed w-full z-50 md:z-40 bg-opacity-95 items-center justify-between md:justify-start border-red-100 bg-transparent  py-1.5 px-3 sm:px-10 inset-x-0" id="asdfg" style="backdrop-filter: blur(8px);">
-            <div class="px-5">
-                <div class="flex justify-between">
-                    <div class="flex space-x-4 w-full" id="qwert">
-                        <!-- logo -->
-                      <a href="/" class="py-1 text-gray-700 hover:text-gray-900">
-
-                      <img src="assets/logo1.png" class=" w-32" alt="">
-                     
-                        </a>  <!-- primary nav -->
-                        <div class="hidden md:flex items-center space-x-1"> 
-
-
-                            <ul id="menuuu" class="lg:ml-5 flex flex-col items-center md:items-start md:flex-row ml-0 md:ml-5 md:space-x-3">
-                                <button style="color: #202020;" onclick="window.scrollTo({  top: 0, behavior: 'smooth'  });">
-                                    <li class="border-b-2 font-bold transition border-transparent hover:border-red-500">Home</li>
-                
-                                </button> <button style="color: #202020;"
-                                    onclick="window.scrollTo({  top: 1320, behavior: 'smooth'  });">
-                                    <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Serviços</li>
-                
-                                </button> <button style="color: #202020;"
-                                    onclick="window.scrollTo({  top: 2550, behavior: 'smooth'  });">
-                                    <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Sobre</li>
-                
-                                </button> <button style="color: #202020;"
-                                    onclick="window.scrollTo({  top: 4100, behavior: 'smooth'  });">
-                                    <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Contactar</li>
-                
-                                </button>
-                            </ul>
-
-                        </div>
-                    </div> <!-- secondary nav -->
-                    <!-- <div class="hidden md:flex items-center space-x-1"> <a class="py-5 px-3">Login</a> <a class="py-2 px-3 bg-yellow-400 text-white hover:bg-yellow-300 text-sm hover:text-yellow-800 rounded transition duration-300">Signup</a> </div> mobile button goes here -->
-                    <div class="md:hidden flex items-center"> <button class="mobile-menu-button focus:outline-none"> <i class='bx bx-menu text-white text-5xl mt-1'  id="check-i"></i> </button> </div>
-                </div>
-            </div> <!-- mobile menu -->
-            <div class="mobile-menu mt-5 pt-2 border-t hidden md:hidden">  
-                <a class="cursor-pointer block py-2 px-4 text-md font-bold border border-transparent hover:bg-red-50 hover:border-red-200 rounded-lg"  style="color: #202020;" onclick="window.scrollTo({  top: 0, behavior: 'smooth'  });">Home</a> <a style="color: #202020;"
-                onclick="window.scrollTo({  top: 1320, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 text-md font-bold border border-transparent hover:bg-red-50 hover:border-red-200">Serviços</a> <a style="color: #202020;"
-                onclick="window.scrollTo({  top: 2550, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 font-bold text-md border border-transparent hover:bg-red-50 hover:border-red-200">Sobre</a> <a style="color: #202020;"
-                onclick="window.scrollTo({  top: 4100, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 font-bold text-md border border-transparent hover:bg-red-50 hover:border-red-200">Contactar</a> </div>
-        </nav>
-        
-        <!-- <nav id="asdfg" style="backdrop-filter: blur(8px);"
+        <nav id="asdfg" style="backdrop-filter: blur(8px);"
             class="border-b  fixed w-full z-50 md:z-40 bg-opacity-95 items-center justify-between md:justify-start border-red-100 bg-transparent flex py-1.5 px-3 sm:px-10">
             <input type="checkbox" id="check">
 
@@ -302,7 +255,7 @@
                 </button>
             </ul>
 
-        </nav> -->
+        </nav>
 
 
         <div class="w-full items-center px-5 sm:px-10 flex pt-44">
@@ -638,21 +591,6 @@
 
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-const btn = document.querySelector("button.mobile-menu-button");
-const menu = document.querySelector(".mobile-menu");
-
-
-btn.addEventListener("click", () => {
-menu.classList.toggle("hidden");
-});
-
-
-
-});
-
-    </script>
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="

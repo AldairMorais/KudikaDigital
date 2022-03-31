@@ -32,18 +32,17 @@ if ('geolocation' in navigator) {
 function bgChanger() {
     if (this.scrollY > this.innerHeight / 1.1) {
         document.getElementById('asdfg').style.background = 'white';
-        document.getElementById('asdfg').classList.add('md:justify-between');
-        document.getElementById('asdfg').classList.add('md:flex');
+        document.getElementById('qwert').classList.add('md:justify-between');
+        // document.getElementById('asdfg').classList.add('md:flex');
         document.getElementById('check-i').style.color = "#202020";
-        // document.getElementById('check-i').classList.remove('text-white');
-        document.getElementById('asdfg').classList.add('transition');
+        // document.getElementById('asdfg').classList.add('transition');
     } else {
 
         document.getElementById('asdfg').style.background = 'transparent';
-        document.getElementById('asdfg').classList.add('transition');
+        // document.getElementById('asdfg').classList.add('transition');
 
         document.getElementById('check-i').style.color = "#fff";
-        document.getElementById('asdfg').classList.remove('md:justify-between');
+        document.getElementById('qwert').classList.remove('md:justify-between');
 
     }
 
