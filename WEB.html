@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kudika Digital</title>
+    <link rel="icon" type="imagem/png" href="/assets/logo.png" />
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/kudika.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    
+<!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"-->
+    <style>
+        body::-webkit-scrollbar {
+            width: 6px;
+            background: #fff;
+            /* border-radius: 100px; */
+            padding: 5px 1px !important;
+            transition: 2s;
+        }
+
+        body {
+            overflow-x: hidden;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            padding: 5px 1px;
+            width: 0px;
+            background: #ccc;
+            /* border-radius: 100px; */
+            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
+            transition: 2s;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+
+        #map {
+            z-index: 1;
+            height: 400px;
+            width: 100%;
+        }
+
+
+        .hvrssss>div {
+            display: none;
+            transition: .4s !important;
+        }
+
+        .hvrssss:hover>div {
+            display: block;
+            transition: .4s !important;
+        }
+
+
+        .hvrssss:hover>h1 {
+            margin-top: -300px;
+            margin-left: 10px;
+        }
+
+        .clip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+        }
+
+        .clip.clip1 {
+            background: url('assets/pexels-mikael-blomkvist-6476249.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            clip-path: polygon(100% 0%, 61% 0%, 51% 100%, 100% 100%);
+            /* clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%); */
+        }
+
+        .clipp {
+            top: 0;
+            left: 0;
+            width: 205%;
+            height: 600px;
+            transition: 0.5s;
+        }
+
+        .clipp.clipp2 {
+            background: url('assets/pexels-mikael-blomkvist-6476249.jpg');
+            background-size: cover;
+            clip-path: polygon(0 0, 52.3% 0%, 42% 100%, 0% 100%);
+            background-attachment: fixed;
+        }
+
+        .menuuu {
+            transition: all 0.5s ease !important;
+        }
+
+        #asdfg {
+            transition: all .5s;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 35px;
+            list-style: 80px;
+            padding: 0 100px;
+
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+            transition: all .5s;
+            display: flex;
+        }
+
+        nav ul button {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        nav ul button li {
+            color: #202020;
+            font-size: 17px;
+            padding: 0px 5px;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: #fff;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 952px) {
+            label.logo {
+                padding-left: 50px;
+                transition: all .5s;
+            }
+
+            nav ul button li {
+                font-size: 16px;
+                transition: all .5s;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .checkbtn {
+                display: block !important;
+            }
+
+            nav ul {
+                position: fixed;
+                height: 100vh;
+                background: #fff;
+                top: 93px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                width: 100%;
+                display: block;
+            }
+
+            nav ul button {
+                display: flex !important;
+                margin: 25px 0;
+                line-height: 30px;
+                transition: all .5s;
+                flex-direction: column !important;
+            }
+
+            nav ul button li {
+                transition: all .5s;
+                font-size: 20px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+                transition: all .5s;
+            }
+
+        }
+
+
+
+        @media (max-width: 400px) {
+          .mnm{
+              display: none;
+          }
+          .txthid{
+              display: none;
+          }
+          
+
+          .phoneuse{
+              width: 260px;
+          }
+
+        }
+        @media (max-width: 430px) {
+
+        .lkl{
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
+          }}
+
+
+
+
+
+
+
+          
+.listamnu li:hover{
+    background-color: #ef4444;
+}
+.listamnu{
+    color: #fff;
+}
+.listamnu li.actived{
+    background-color: #ef4444 !important; 
+    color: #fff;
+}
+.dnone{
+    display: none;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+   
+    
+ <div class=" bg-red-50">
+    <nav class="border-b  fixed w-full z-50 md:z-40 bg-opacity-95 items-center justify-between md:justify-start border-red-100 bg-transparent  py-1.5 px-3 sm:px-10 inset-x-0" id="asdfg" style="backdrop-filter: blur(8px);">
+        <div class="px-5">
+            <div class="flex justify-between" id="qwert">
+                <div class="flex space-x-4 w-full justify-between">
+                    <!-- logo -->
+                  <a href="/" class="py-1 text-gray-700 hover:text-gray-900">
+
+                  <img src="assets/logo1.png" class=" w-32" alt="">
+                 
+                    </a>  <!-- primary nav -->
+                    <div class="hidden md:flex items-center space-x-1"> 
+
+
+                        <ul id="menuuu" class="lg:ml-5 flex flex-col items-center md:items-start md:flex-row ml-0 md:ml-5 md:space-x-3">
+                            <button style="color: #202020;" onclick="window.scrollTo({  top: 0, behavior: 'smooth'  });">
+                                <li class="border-b-2 font-bold transition border-transparent hover:border-red-500">Home</li>
+            
+                            </button> <button style="color: #202020;"
+                                onclick="window.scrollTo({  top: 1320, behavior: 'smooth'  });">
+                                <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Serviços</li>
+            
+                            </button> <button style="color: #202020;"
+                                onclick="window.scrollTo({  top: 1900, behavior: 'smooth'  });">
+                                <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Preços</li>
+            
+                            </button> <button style="color: #202020;"
+                                onclick="window.scrollTo({  top: 4100, behavior: 'smooth'  });">
+                                <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Contactar</li>
+            
+                            </button>
+                        </ul>
+
+                    </div>
+                </div> <!-- secondary nav -->
+                <!-- <div class="hidden md:flex items-center space-x-1"> <a class="py-5 px-3">Login</a> <a class="py-2 px-3 bg-yellow-400 text-white hover:bg-yellow-300 text-sm hover:text-yellow-800 rounded transition duration-300">Signup</a> </div> mobile button goes here -->
+                <div class="md:hidden flex items-center"> <button class="mobile-menu-button focus:outline-none"> <i class='bx bx-menu text-white text-5xl mt-1'  id="check-i"></i> </button> </div>
+            </div>
+        </div> <!-- mobile menu -->
+        <div class="mobile-menu mt-5 pt-2 border-t hidden md:hidden">  
+            <a class="cursor-pointer block py-2 px-4 text-md font-bold border border-transparent hover:bg-red-50 hover:border-red-200 rounded-lg"  style="color: #202020;" onclick="window.scrollTo({  top: 0, behavior: 'smooth'  });">Home</a> <a style="color: #202020;"
+            onclick="window.scrollTo({  top: 1320, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 text-md font-bold border border-transparent hover:bg-red-50 hover:border-red-200">Serviços</a> <a style="color: #202020;"
+            onclick="window.scrollTo({  top: 2550, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 font-bold text-md border border-transparent hover:bg-red-50 hover:border-red-200">Sobre</a> <a style="color: #202020;"
+            onclick="window.scrollTo({  top: 4100, behavior: 'smooth'  });" class="cursor-pointer block rounded-lg py-2 px-4 font-bold text-md border border-transparent hover:bg-red-50 hover:border-red-200">Contactar</a> </div>
+    </nav>
+<div class="  sm:px-10 pt-40 pb-16">
+
+    <div class="z-20 bg-white py-12 px-5 md:px-20 lkl shadow-xl animated-fast fadeInLeft flex " style="
+/* clip-path: polygon(0 0, 100% 0%, 88% 100%, 0% 100%); */
+">
+       <div class="z-20"> <h1 style="color: #202020;" class="text-4xl sm:w-96 md:w-full mb-3 uppercase font-bold">PROGRAMAÇÃO WEB</h1>
+        <div class="text-2xl  sm:w-80 md:w-96 lg:w-4/12"><span class="">
+           Tenha uma página WEB, acessível a todos, para mostrar ao mundo o seu produto!
+</div>                <a  onclick="window.scrollTo({  top: 4100, behavior: 'smooth'  });" class="hvr-rotate cursor-pointer hvr-forward bg-red-600 py-3  transition mt-3 px-9 uppercase font-black text-white">Junte-se a
+            nós</a>
+</div>
+
+    <i class="fa z-0 absolute right-16
+     text-gray-200 fa-code md:text-4xl animated-fast zoomIn" style="font-size: 10em;"></i>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<div class="px-10 py-10">
+    <h1 style="font-size: 0.8em;">DESENVOLVIMENTO WEB</h1>
+    <h1 class="font-bold text-4xl" style="margin-bottom: 30px; line-height: 1.2em; color: #333333;"> NOSSA CATEGORIA  <br>DE SITES</h1>
+   <div>
+     <div class="mt-14 flex justify-start md:justify-center flex-wrap">
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-cart-plus"></i></span> <div class="px-4"><h1 class="font-bold text-xl">E-commerce</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-user"></i></span> <div class="px-4"><h1 class="font-bold text-xl">Blogs</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-user"></i></span> <div class="px-4"><h1 class="font-bold text-xl">Institucionais</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-user"></i></span> <div class="px-4"><h1 class="font-bold text-xl">Landing Page</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-user"></i></span> <div class="px-4"><h1 class="font-bold text-xl">Portfólios</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+                <div class="mb-6 flex items-start w-full md:w-96"> <span class="py-2 px-5 bg-red-600 text-white rounded-lg border"><i class="fas fa-user"></i></span> <div class="px-4"><h1 class="font-bold text-xl">Hotsites</h1> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae suscipit necessitatibus natus eos ipsam iusto, obcaecati ea id saepe dicta rem provident qui nihil repellendus porro? Maiores facilis explicabo nisi.</p></div></div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bg-gray-50 py-10 px-10">
+
+
+    <h1 class="font-bold text-4xl" style="line-height: 1.2em; color: #333333;">VOCÊ SÓ FICA A GANHAR!</h1>
+    <p>Prezamos por utilizar as melhores práticas no ramo da WEB. <br> Verifique os seus benefícios</p>
+  
+
+    <div class="servicos justify-center mt-5 flex flex-wrap">
+   
+         
+        <div class="w-full mt-10 flex flex-col md:flex-row justify-around items-center">
+<div class="">
+<ul class="flex listamnu mb-5 flex-wrap md:flex-col md:space-x-0 space-x-1">
+   <li class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50 actived" onclick="
+   document.querySelector('.webdev').style.display = 'block'
+   document.querySelector('.infd').style.display = 'none'
+   document.querySelector('.gesms').style.display = 'none'
+   document.querySelector('.desgra').style.display = 'none'
+   document.querySelector('.ftga').style.display = 'none'
+   document.querySelector('.others').style.display = 'none'
+"> <i class="fas text-white fa-globe mr-2"></i> SEO</li>
+   <li onclick="
+   document.querySelector('.webdev').style.display = 'none'
+   document.querySelector('.infd').style.display = 'block'
+   document.querySelector('.gesms').style.display = 'none'
+   document.querySelector('.desgra').style.display = 'none'
+   document.querySelector('.ftga').style.display = 'none'
+   document.querySelector('.others').style.display = 'none'
+" class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50"> <i class="fas text-white fa- fa-tablet mr-2"></i> Responsividade</li>
+   <li onclick="
+   document.querySelector('.webdev').style.display = 'none'
+   document.querySelector('.infd').style.display = 'none'
+   document.querySelector('.gesms').style.display = 'block'
+   document.querySelector('.desgra').style.display = 'none'
+   document.querySelector('.ftga').style.display = 'none'
+   document.querySelector('.others').style.display = 'none'
+" class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50"> <i class="fas text-white fa-code mr-1"></i> Melhor performance</li>
+   <li onclick="
+   document.querySelector('.webdev').style.display = 'none'
+   document.querySelector('.infd').style.display = 'none'
+   document.querySelector('.gesms').style.display = 'none'
+   document.querySelector('.desgra').style.display = 'block'
+   document.querySelector('.ftga').style.display = 'none'
+   document.querySelector('.others').style.display = 'none'
+" class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50"> <i class="fas text-white fa-lightbulb mr-2"></i> WEB DESIGN</li>
+   <li onclick="
+   document.querySelector('.webdev').style.display = 'none'
+   document.querySelector('.infd').style.display = 'none'
+   document.querySelector('.gesms').style.display = 'none'
+   document.querySelector('.desgra').style.display = 'none'
+   document.querySelector('.ftga').style.display = 'block'
+   document.querySelector('.others').style.display = 'none'
+" class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50"> <i class="fas text-white fa-tasks mr-1"></i> Funcionalidade</li>
+   <li onclick="
+   document.querySelector('.webdev').style.display = 'none'
+   document.querySelector('.infd').style.display = 'none'
+   document.querySelector('.gesms').style.display = 'none'
+   document.querySelector('.desgra').style.display = 'none'
+   document.querySelector('.ftga').style.display = 'none'
+   document.querySelector('.others').style.display = 'block'
+" class="bg-red-700 transition cursor-pointer py-2 px-10 rounded-lg mb-2 text-red-50"> <i class="fa fa-shield-alt mr-1"></i> Segurança</li>
+</ul>
+
+</div>
+<div class="bg-white border border-gray-400 pt-10 shadow-2xl rounded-xl px-3 pb-5">
+<div class="bg-red-600 w-32 h-5 shadow-2xl -mt-4 rounded-t-md"></div>   
+<div style="height: 500px;" class="bg-gray-50 border-2 py-5 w-96 phoneuse px-2 flex-shrink-0 rounded-b-2xl">
+<div class="webdev">
+   Sites exclusivos, adaptados para uma gama de dispositivos e planejados para sua empresa conquistar
+   novos clientes.
+</div>
+<div class="infd dnone">Descubra como aumentar o seu potencial desenvolvendo o Marketing de
+   influência. Criando laços que conectem o seu público e lhe façam atingir milhões de consumidores.</div>
+<div class="gesms dnone"> Deixe-nos criar conteúdos, publicar imagens e vídeos para engajar o seu público alvo, e permitir que
+   venda mais, atraia mais e mantenha a estabilidade.</div>
+<div class="desgra dnone">  Marca, logotipo, identidade visual, catálogo, portfólio, folder, apresentação, anúncio, peça
+   publicitária, banners, embalagem, papelaria, sinalização, fachadas e muito mais.</div>
+<div class="ftga dnone">
+   <ul style="list-style: disc;" class=" px-5"> 
+       <li>Criação de álbuns, revistas</li>  
+       <li>Prestação serviços de fotografia em eventos, como: Festas de aniversário, Casamentos, Batismos, Conferências, Exposições e Publicidades.</li> 
+     </ul>
+</div>
+<div class="others dnone">
+   
+   <ul style="list-style: disc;" class=" px-5">
+       <li>Copy Writer - Produto de conteúdo</li>
+       <li>Organização e coordenação de eventos</li>
+       <li>planejamento estratégico</li>
+       <li>Consultoria</li>
+   </ul>
+</div>
+</div>
+</div>
+
+        </div>
+        
+        
+       </div>
+
+
+
+
+   <div class="text-center pt-32 pb-10">
+
+    <h1 class="font-bold text-4xl" style="line-height: 1.2em; color: #333333;">PREÇÁRIOS</h1>
+
+    
+    <div class="servicos justify-center mt-14 flex flex-wrap">
+        <div class="shadow-lg border transform translate-y-1 cursor-pointer transition w-full sm:w-64 md:w-72 xl:w-96 p-5">
+            <div class=" space-x-2 items-center">
+                <p class="text-2xl font-semibold">Título</p>
+                <h1 class="block text-6xl font-bold">N Kz</h1>
+            </div>
+            <p class="text-gray-500 mt-3 pb-5" style="font-weight: 100;">
+                <ul>
+                    <li>1 coisa incluída </li>
+                    <li>outra coisa incluída </li>
+                    <li>mais outra coisa incluída </li>
+                </ul>
+            </p>
+        </div>
+
+
+        <div class="shadow-lg bg-white border transform md:hover:translate-y-1 cursor-pointer transition w-full sm:w-64 md:w-72 xl:w-96 p-5">
+            <div class=" space-x-2 items-center">
+                <p class="text-2xl font-semibold">Título</p>
+                <h1 class="block text-6xl font-bold">N Kz</h1>
+            </div>
+            <p class="text-gray-500 mt-3 pb-5" style="font-weight: 100;">
+                <ul>
+                    <li>1 coisa incluída </li>
+                    <li>outra coisa incluída </li>
+                    <li>mais outra coisa incluída </li>
+                </ul>
+            </p>
+        </div>
+        <div class="shadow-lg border transform translate-y-1 cursor-pointer transition w-full sm:w-64 md:w-72 xl:w-96 p-5">
+            <div class=" space-x-2 items-center">
+                <p class="text-2xl font-semibold">Título</p>
+                <h1 class="block text-6xl font-bold">N Kz</h1>
+            </div>
+            <p class="text-gray-500 mt-3 pb-5" style="font-weight: 100;">
+                <ul>
+                    <li>1 coisa incluída </li>
+                    <li>outra coisa incluída </li>
+                    <li>mais outra coisa incluída </li>
+                </ul>
+            </p>
+        </div>
+   
+ 
+
+    </div>
+
+   </div>
+
+</div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="contact" class="bg-white mb-28 pt-32 px-3 sm:px-10 w-full">
+
+    <h1 id="contactar" class="font-bold text-4xl" style="line-height: 1.2em; color: #202020;">CONTACTE-NOS</h1>
+
+    <p style="margin-bottom: 30px; font-size: 0.9em; "> Tem dúvidas? Críticas? Sugestões? Fala connosco. Teremos o
+        maior prazer em receber a sua mensagem!</p>
+    <div class="w-full  md:items-center
+     flex
+     md:flex-row
+     flex-col">
+
+
+<!-- Make sure you don't change the form action-->
+<form action="https://api.staticforms.xyz/submit" method="post"  class="space-y-2.5 mr-8 w-full">
+<!-- Replace with accesKey sent to your email -->
+<input type="hidden" name="accessKey" value="0c3d5874-a513-4a84-bb14-a7d0559ecc01" class="border"> 
+<div class="flex space-x-2">
+
+    <div class="flex flex-col w-full">
+        <label class="block text-gray-800" style="font-size: 0.99em;">Nome</label>
+        <input type="text" placeholder="Digite o seu nome" name="name" id="" class="border bg-gray-100 hover:bg-white placeholder-gray-500 text-gray-800 w-full py-2 px-3 transition outline-none">
+    </div>
+
+    <div class="flex flex-col w-full">
+        <label class="block text-gray-800" style="font-size: 0.99em;">Número</label>
+        <input type="text" max="9" placeholder="Digite seu número de telefone" name="phone" id=""
+            class="border bg-gray-100 hover:bg-white placeholder-gray-500 text-gray-800 w-full py-2 px-3 transition outline-none">
+    </div>
+</div>
+
+
+<div class="flex space-x-2">
+    <div class="flex flex-col w-full">
+        <label class="block text-gray-800" style="font-size: 0.99em;">Email</label>
+        <input type="email" placeholder="email@exemplo.com" name="email" id=""
+            class="border bg-gray-100 hover:bg-white placeholder-gray-500 text-gray-800 w-full py-2 px-3 transition outline-none">
+
+    </div>
+</div>
+
+<div class="flex-col flex">
+    <label class="block mt-1 text-gray-800" style="font-size: 0.99em;">Assunto</label>
+    <input type="text" placeholder="Qual é o assunto para esta mensagem?" name="subject" id=""
+        class="border bg-gray-100 hover:bg-white placeholder-gray-500 text-gray-800 w-full py-2 px-3 transition outline-none">
+    <label class="block mt-2 text-gray-800" style="font-size: 0.99em;">Mensagem</label>
+    <textarea name="message" placeholder="Mensagem..." id=""
+        class="border bg-gray-100 hover:bg-white placeholder-gray-500 text-gray-800 w-full py-2 px-3 transition outline-none"></textarea>
+</div>
+
+<input type="hidden" name="redirectTo" value="http://127.0.0.1:5500/index.html" class="border"> <!-- Optional -->
+
+<div style="margin-top: 15px !important;">
+    <input type="submit" value="Enviar" class="w-full py-3 bg-red-600 text-red-50">
+</div>
+
+</form>
+
+
+
+<!-- <input type="text" name="replyTo" value="myreplytoemail@example.com" class="border">  -->
+<!-- Optional -->
+<!-- Specify @ as reply to value if you want it to be customers email -->
+<!-- <input type="hidden" name="replyTo" value="@" class="border"> -->
+<!-- Optional -->
+<!-- If you want form to redirect to a specific url after submission -->
+        <div class="md:w-4/6 mt-10 md:-mt-10">
+
+            <div class="">
+                <p class="font-bold mt-5">LOCALIZAÇÃO</p>
+                <div class="flex space-x-2 items-center mb-3">
+                    <i class="text-red-600 text-lg fas fa-map-marker-alt"></i>
+                    <p class="text-gray-700 text-lg">Rangel, CTTs, Ed. Digital.ao</p>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<footer style="background: #202020;" class="pb-5 px-2 pt-5 sm:px-10">
+    <div class="md:flex-row md:items-center justify-around flex flex-col">
+        
+        <div>
+            <ul class="flex flex-col justify-center mt-5 sm:flex-row sm:space-x-3 text-red-100">
+                <a href="https://www.facebook.com/kudikadigital/">
+                    <li class="bg-red-600 flex px-3 py-1 justify-center mb-1 items-center"><i
+                            class="mr-2 fab fa-facebook-f text-2xl"></i> kudika digital</li>
+                </a>
+                <a href="">
+                    <li class="bg-red-600 flex px-3 py-1 justify-center mb-1 items-center"><i
+                            class="mr-2 fab fa-whatsapp text-2xl"></i> 932390190</li>
+                </a>
+                <a href="https://www.instagram.com/kudikadigital/">
+                    <li class="bg-red-600 flex px-3 py-1 justify-center mb-1 items-center"><i
+                            class="mr-2 fab fa-instagram text-2xl"></i> kudikadigital</li>
+                </a>
+    
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="pt-20">
+    <hr class="w-50">
+    <p class="flex text-white justify-center">&copy; 2022 Kudika Digital</p>
+    </div>
+
+</footer>
+    
+    <script>
+        var btnContainer = document.querySelector(".listamnu")
+        var btns = btnContainer.getElementsByTagName("li")
+
+        for (var i =0; i<btns.length; i++) {
+         
+         btns[i].addEventListener('click', function(){
+            var current = document.getElementsByClassName("actived");
+            current[0].className = current[0].className.replace(" actived")
+            this.className += " actived"
+        })
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+const btn = document.querySelector("button.mobile-menu-button");
+const menu = document.querySelector(".mobile-menu");
+
+
+btn.addEventListener("click", () => {
+menu.classList.toggle("hidden");
+});
+
+
+
+});
+
+    </script>
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="js/all.js"></script>
+</body>
+
+</html>
