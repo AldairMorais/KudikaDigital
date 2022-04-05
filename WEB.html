@@ -227,7 +227,15 @@
 
 
 
+          .typeText::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
 
+@keyframes blink {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0;}
+}
 
 
           
@@ -267,10 +275,10 @@
 
 
                         <ul id="menuuu" class="lg:ml-5 flex flex-col items-center md:items-start md:flex-row ml-0 md:ml-5 md:space-x-3">
-                            <button style="color: #202020;" onclick="window.scrollTo({  top: 0, behavior: 'smooth'  });">
+                            <a href="index.html" style="color: #202020;" >
                                 <li class="border-b-2 font-bold transition border-transparent hover:border-red-500">Home</li>
             
-                            </button> <button style="color: #202020;"
+                            </a> <button style="color: #202020;"
                                 onclick="window.scrollTo({  top: 1320, behavior: 'smooth'  });">
                                 <li class="border-b-2 transition font-bold border-transparent hover:border-red-500">Serviços</li>
             
@@ -320,7 +328,7 @@
 
 
 
-<div class="px-10 py-10">
+<div class="px-10 py-16">
     <h1 style="font-size: 0.8em;">DESENVOLVIMENTO WEB</h1>
     <h1 class="font-bold text-4xl" style="margin-bottom: 30px; line-height: 1.2em; color: #333333;"> NOSSA CATEGORIA  <br>DE SITES</h1>
    <div>
@@ -346,7 +354,7 @@
 
 
 
-<div class="bg-gray-50 py-10 px-10">
+<div class="bg-gray-50 py-16 px-10">
 
 
     <h1 class="font-bold text-4xl" style="line-height: 1.2em; color: #333333;">VOCÊ SÓ FICA A GANHAR!</h1>
@@ -412,11 +420,34 @@
 </div>
 <div class="bg-white border border-gray-400 pt-10 shadow-2xl rounded-xl px-3 pb-5">
 <div class="bg-red-600 w-32 h-5 shadow-2xl -mt-4 rounded-t-md"></div>   
-<div style="height: 500px;" class="bg-gray-50 border-2 py-5 w-96 phoneuse px-2 flex-shrink-0 rounded-b-2xl">
-<div class="webdev">
-   Sites exclusivos, adaptados para uma gama de dispositivos e planejados para sua empresa conquistar
-   novos clientes.
+<div style="height: 500px;" class="bg-gray-50 border-2 py-5 w-96 phoneuse  flex-shrink-0 rounded-b-2xl">
+<div class="webdev px-2 justify-center w-full pt-12 flex flex-col ">
+   <!-- Sites exclusivos, adaptados para uma gama de dispositivos e planejados para sua empresa conquistar
+   novos clientes. -->
+   <div class="justify-center w-full flex ">
+    <img class="h-12" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png">
+   </div>
+    <div class="border rounded-full w-full mt-2 pt-1.5 pb-2 px-5">
+    <p class="typeText"></p>
 </div>
+
+<div class="pt-7 h-48">
+<img id="qwsda1" class="rounded-xl shadow" src="https://magnus-ui.com/images/docs/skeleton/1.gif">
+<div class='border shadow p-5 bg-white rounded-xl jhj' style="display:none;">
+    <p class='text-gray-800 font-semibold'>kudikadigital.com</p>
+    <!-- <p>LOREM</p> -->
+</div>
+<div class='border shadow p-5 bg-white rounded-xl jhjj mt-1' style="display:none;">
+    <p class='text-gray-800 font-semibold'>outros sites.com</p>
+    <!-- <p>LOREM</p> -->
+</div>
+</div>
+<div class="border-t pt-1.5">
+<p class="pt-5 bg-gray-100 px-4 h-32 rounded-xl border-2 border-gray-300">    O seu site estará no <span class="font-semibold">lugar nº 1 no ranking dos motores de busca</span>. Nós ajudaremos a alcançar essa visibilidade.</p>
+</div>
+</div>
+
+
 <div class="infd dnone">Descubra como aumentar o seu potencial desenvolvendo o Marketing de
    influência. Criando laços que conectem o seu público e lhe façam atingir milhões de consumidores.</div>
 <div class="gesms dnone"> Deixe-nos criar conteúdos, publicar imagens e vídeos para engajar o seu público alvo, e permitir que
@@ -633,36 +664,8 @@
     </div>
 
 </footer>
-    
-    <script>
-        var btnContainer = document.querySelector(".listamnu")
-        var btns = btnContainer.getElementsByTagName("li")
-
-        for (var i =0; i<btns.length; i++) {
-         
-         btns[i].addEventListener('click', function(){
-            var current = document.getElementsByClassName("actived");
-            current[0].className = current[0].className.replace(" actived")
-            this.className += " actived"
-        })
-        }
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-const btn = document.querySelector("button.mobile-menu-button");
-const menu = document.querySelector(".mobile-menu");
 
 
-btn.addEventListener("click", () => {
-menu.classList.toggle("hidden");
-});
-
-
-
-});
-
-    </script>
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
