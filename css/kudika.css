@@ -59,10 +59,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .clip.clip1 {
-    background: url('assets/pexels-mikael-blomkvist-6476249.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    clip-path: polygon(100% 0%, 61% 0%, 51% 100%, 100% 100%);
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    clip-path: polygon(100% 0%, 61% 0%, 51% 100%, 100% 100%) !important;
     /* clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%); */
 }
 
