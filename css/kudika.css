@@ -1,3 +1,11 @@
+
+body {
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body::-webkit-scrollbar {
     width: 6px;
     background: #fff;
@@ -11,6 +19,210 @@ body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+#map {
+    z-index: 1;
+    height: 400px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+body::-webkit-scrollbar-thumb {
+    padding: 5px 1px;
+    width: 0px;
+    background: #ccc;
+    /* border-radius: 100px; */
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    transition: 2s;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+
+
+
+.menuuu {
+    transition: all 0.5s ease !important;
+}
+
+#asdfg {
+    transition: all .5s;
+}
+
+nav {
+    width: 100%;
+}
+
+label.logo {
+    color: white;
+    font-size: 35px;
+    list-style: 80px;
+    padding: 0 100px;
+
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+    transition: all .3s;
+    display: flex;
+}
+
+nav ul button {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+nav ul button li {
+    color: #202020;
+    font-size: 17px;
+    padding: 0px 5px;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: #fff;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 952px) {
+    label.logo {
+        padding-left: 50px;
+        transition: all .5s;
+    }
+
+    nav ul button li {
+        font-size: 16px;
+        transition: all .5s;
+    }
+}
+
+@media (max-width: 767px) {
+    .checkbtn {
+        display: block !important;
+    }
+
+    nav ul {
+        position: fixed;
+        height: 100vh;
+        background: #fff;
+        top: 93px;
+        left: -100%;
+        text-align: center;
+        transition: all .4s;
+        width: 100%;
+        display: block;
+    }
+
+    nav ul button {
+        display: flex !important;
+        margin: 25px 0;
+        line-height: 30px;
+        transition: all .4s;
+        flex-direction: column !important;
+    }
+
+    nav ul button li {
+        transition: all .4s;
+        font-size: 20px;
+    }
+
+    #check:checked~ul {
+        left: 0;
+        transition: all .4s;
+    }
+
+}
+
+.strokewhite {
+    -webkit-text-stroke: .5px #fff !important;
+    transition: .1s !important;
+}
+
+.text-smnav {
+    font-size: 1.04em !important;
+}
+
+
+.typeText::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+
+
+.listamnu li:hover {
+    background-color: #ef4444;
+}
+
+.listamnu {
+    color: #fff;
+}
+
+.listamnu li.actived {
+    background-color: #ef4444 !important;
+    color: #fff;
+}
+
+.dnone {
+    display: none;
+}
+
+
+.h1 {
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font: 800 1.313em "proxima-nova", sans-serif;
+    padding: 10px 10px;
+    margin: 20px 20px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-size: 3.125em;
+    text-align: center;
+    max-width: 606px;
+    line-height: 1.45em;
+    position: scroll;
+    background-color: #e94f78;
+    text-decoration: none;
+    color: yellow;
+    background-image: url;
+}
+
+.h1 .a {
+    text-decoration: none;
+    color: yellow;
+    padding-left: 0.15em;
+}
+
+
+
+.whiteboard {
+    /* background-image:url(http://krystalrae.com/img/krystalrae-2012-fall-print-leopard-sketch.jpg); */
+    background-position: center;
+    /* background-color: #fff; */
+    z-index: 1000;
+    width: 100%;
 }
 
 body::-webkit-scrollbar-thumb {
